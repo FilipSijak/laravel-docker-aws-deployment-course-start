@@ -20,8 +20,6 @@ stop: ## Stop all containers
 restart: stop start ## Restart all containers
 destroy: stop ## Destroy all containers
 
-build-prod: ## Build all containers for DEV
-	@docker build --no-cache .
 start-prod: ## Start all containers
 	@docker compose up --force-recreate -d
 stop-prod: ## Stop all containers
@@ -64,3 +62,18 @@ lint: ## Run phpcs
 
 lint-fix: ## Run phpcbf
 	./vendor/bin/phpcbf --standard=ruleset.xml app/
+
+auth:
+	aws ecr get-login-password --region us-east-1 --profile guru| docker login --username AWS --password-stdin 142490762140.dkr.ecr.us-east-1.amazonaws.com
+
+build-prod: ## Build all containers for DEV
+	docker build -t prod-larave-api-base-image .
+
+push:
+	docker tag prod-larave-api-base-image:latest 142490762140.dkr.ecr.us-east-1.amazonaws.com/prod-larave-api-base-image:latest
+	docker push 142490762140.dkr.ecr.us-east-1.amazonaws.com/prod-larave-api-base-image:latest
+
+build-push:
+	make build-prod
+	make push
+
