@@ -66,7 +66,7 @@ lint-fix: ## Run phpcbf
 auth:
 	aws ecr get-login-password --region us-east-1 --profile guru | docker login --username AWS --password-stdin 029887954252.dkr.ecr.us-east-1.amazonaws.com
 
-build-prod: ## Build all containers for DEV
+build-prod: ## Build all containers for DEVs
 	docker build -t prod-laravel-api-base-image .
 
 push:
