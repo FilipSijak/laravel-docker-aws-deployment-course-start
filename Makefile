@@ -60,7 +60,7 @@ tests-html: ## Run tests and generate coverage. Report found in reports/index.ht
 lint: ## Run phpcs
 	./vendor/bin/phpcs --standard=ruleset.xml app/
 
-lint-fix: ## Run phpcbf
+lint-fix: ## Run php
 	./vendor/bin/phpcbf --standard=ruleset.xml app/
 
 auth:
