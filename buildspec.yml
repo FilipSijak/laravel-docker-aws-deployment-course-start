@@ -12,7 +12,7 @@ phases:
     on-failure: ABORT
     commands:
       - echo 'prebuild'
-      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 029887954252.dkr.ecr.us-east-1.amazona
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 029887954252.dkr.ecr.us-east-1.amazonaws.com
     # steps:
   build:
     on-failure: ABORT
