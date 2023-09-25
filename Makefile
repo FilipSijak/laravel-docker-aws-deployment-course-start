@@ -64,14 +64,14 @@ lint-fix: ## Run php
 	./vendor/bin/phpcbf --standard=ruleset.xml app/
 
 auth:
-	aws ecr get-login-password --region us-east-1 --profile guru | docker login --username AWS --password-stdin 029887954252.dkr.ecr.us-east-1.amazonaws.com
+	aws ecr get-login-password --region us-east-1 --profile guru | docker login --username AWS --password-stdin 214463555891.dkr.ecr.us-east-1.amazonaws.com
 
 build-prod: ## Build all containers for DEVs
-	docker build -t prod-laravel-api-base-image .
+	docker build -t prod-laravel-api .
 
 push:
-	docker tag prod-laravel-api-base-image:latest 237195748584.dkr.ecr.us-east-1.amazonaws.com/prod-laravel-api-base-image:latest
-	docker push 237195748584.dkr.ecr.us-east-1.amazonaws.com/prod-laravel-api-base-image:latest
+	docker tag prod-laravel-api:latest 214463555891.dkr.ecr.us-east-1.amazonaws.com/prod-laravel-api:latest
+	docker push 214463555891.dkr.ecr.us-east-1.amazonaws.com/prod-laravel-api:latest
 
 build-push:
 	make build-prod
